@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>智源书院 - 签到打卡学习系统</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 头部 -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-book-open fa-2x"></i>
+                <h1>智源书院</h1>
+            </div>
+            <nav class="nav-links">
+                <a href="#registration">学员登记</a>
+                <a href="#borrow">借书登记</a>
+                <a href="#checkin">学习打卡</a>
+                <a href="#about">关于我们</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 主图区域 -->
+    <section class="hero">
+        <div class="hero-content">
+            <h2>温馨学习，智慧打卡</h2>
+            <p>智源书院为您提供舒适的学习环境和便捷的签到打卡系统</p>
+            <a href="#registration" class="btn">立即登记</a>
+        </div>
+    </section>
+
+    <!-- 功能区域 -->
+    <section class="features" id="registration">
+        <div class="container">
+            <h2 class="section-title">学员登记</h2>
+            <div class="form-container">
+                <form id="registration-form">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="student-id">学号</label>
+                            <input type="text" id="student-id" placeholder="请输入学号" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="student-name">姓名</label>
+                            <input type="text" id="student-name" placeholder="请输入姓名" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">联系电话</label>
+                        <input type="tel" id="phone" placeholder="请输入联系电话" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="department">所属院系</label>
+                        <select id="department" required>
+                            <option value="">请选择院系</option>
+                            <option value="literature">生命科学与技术学院</option>
+                            <option value="science">化学与环境工程学院</option>
+                            <option value="engineering">食品科技学院</option>
+                            <option value="business">医药学院</option>
+                            <option value="science">园林园艺学院</option>
+                            <option value="engineering">计算机科学与技术学院</option>
+                            <option value="literature">管理学院</option>
+                            <option value="science">文学院</option>
+                            <option value="engineering">外国语学院</option>
+                            <option value="business">体育学院</option>
+                            <option value="science">机械与电子工程学院</option>
+                            <option value="engineering">软件工程学院</option>
+                            <option value="engineering">建筑工程学院</option>
+                            <option value="business">艺术学院</option>
+                            <option value="science">音乐学院</option>
+                            <option value="engineering">马克思主义学院</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%;">提交登记</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- 借书登记 -->
+    <section class="features" id="borrow" style="background-color: var(--secondary);">
+        <div class="container">
+            <h2 class="section-title">借书登记</h2>
+            <div class="form-container">
+                <form id="borrow-form">
+                    <div class="form-group">
+                        <label for="book-id">图书编号</label>
+                        <input type="text" id="book-id" placeholder="请输入图书编号" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="book-name">图书名称</label>
+                        <input type="text" id="book-name" placeholder="请输入图书名称" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="borrow-date">借阅日期</label>
+                        <input type="date" id="borrow-date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="return-date">预计归还日期</label>
+                        <input type="date" id="return-date" required>
+                    </div>
+                    <button type="submit" class="btn" style="width: 100%;">提交借阅</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- 打卡区域 -->
+    <section class="checkin-section" id="checkin">
+        <div class="container">
+            <h2 class="section-title">学习打卡</h2>
+            <div class="checkin-status checkin-inactive" id="checkin-status">
+                当前状态：未打卡
+            </div>
+            
+            <div class="location-info">
+                <div>
+                    <div class="label">当前位置</div>
+                    <div class="value" id="current-location">定位中...</div>
+                </div>
+                <div>
+                    <div class="label">与书院距离</div>
+                    <div class="value" id="distance">计算中...</div>
+                </div>
+                <div>
+                    <div class="label">打卡时长</div>
+                    <div class="value" id="duration">00:00:00</div>
+                </div>
+            </div>
+            
+            <div style="text-align: center;">
+                <button class="btn" id="start-checkin">开始打卡</button>
+                <button class="btn" id="end-checkin" style="display: none; background-color: #c62828;">结束打卡</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 底部 -->
+    <footer id="about">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>关于智源书院</h3>
+                    <p>智源书院致力于为学员提供优质的学习环境和资源，打造温馨舒适的学习空间。</p>
+                </div>
+                <div class="footer-section">
+                    <h3>联系我们</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> 地址：武汉生物工程学院八号楼一楼</p>
+                    <p><i class="fas fa-phone"></i> 咨询电话：157 9401 5264</p>
+                    <p><i class="fas fa-envelope"></i> 邮箱：chengchengjinglema@qq.com</p>
+                </div>
+                <div class="footer-section">
+                    <h3>关注我们</h3>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-weixin"></i></a>
+                        <a href="#"><i class="fab fa-weibo"></i></a>
+                        <a href="#"><i class="fab fa-qq"></i></a>
+                        <a href="#"><i class="fab fa-bilibili"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>版权所有 © 2023 智源书院项目经营团队 | 备案号：120120</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
